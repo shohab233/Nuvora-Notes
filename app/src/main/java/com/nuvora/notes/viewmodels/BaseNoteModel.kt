@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.viewmodels
+package com.nuvora.notes.viewmodels
 
 import android.app.AlarmManager
 import android.app.Application
@@ -13,8 +13,10 @@ import android.text.Html
 import android.widget.Toast
 import androidx.core.text.toHtml
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import androidx.room.withTransaction
 import com.nuvora.notes.ActionMode
@@ -82,11 +84,12 @@ class BaseNoteModel(private val app: Application) : AndroidViewModel(app) {
     val archivedNotes = Content(baseNoteDao.getFrom(Folder.ARCHIVED), ::transform)
 
     val searchQuery = BetterLiveData(Pair(String(), Folder.NOTES))
-    val searchResults = Transformations.switchMap(searchQuery) { (keyword, folder) ->
+    val searchResults: LiveData<List<Item>> = searchQuery.switchMap { pair: Pair<String, Folder> ->
+        val (keyword, folder) = pair
         if (keyword.isEmpty()) {
             MutableLiveData(emptyList())
         } else {
-            Transformations.map(baseNoteDao.getBaseNotesByKeyword(keyword, folder), ::transform)
+            baseNoteDao.getBaseNotesByKeyword(keyword, folder).map(::transform)
         }
     }
 
