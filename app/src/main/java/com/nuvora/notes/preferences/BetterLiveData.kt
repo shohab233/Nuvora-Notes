@@ -1,11 +1,10 @@
-﻿package com.nuvora.notes.preferences
+package com.nuvora.notes.preferences
 
 import androidx.lifecycle.MutableLiveData
 
-// LiveData that doesn't accept null values
-class BetterLiveData<T>(value: T) : MutableLiveData<T>(value) {
+class BetterLiveData<T>(private val defaultValue: T) : MutableLiveData<T>(defaultValue) {
 
     override fun getValue(): T {
-        return requireNotNull(super.getValue())
+        return super.getValue() ?: defaultValue
     }
 }

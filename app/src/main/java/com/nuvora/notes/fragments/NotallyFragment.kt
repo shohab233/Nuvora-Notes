@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.fragments
+package com.nuvora.notes.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -113,8 +113,8 @@ abstract class NotallyFragment : Fragment(), ItemListener {
 
     private fun setupObserver() {
         getObservable().observe(viewLifecycleOwner) { list ->
-            adapter?.submitList(list)
-            binding?.ImageView?.isVisible = list.isEmpty()
+            adapter?.submitList(list ?: emptyList())
+            binding?.ImageView?.isVisible = list?.isEmpty() ?: true
         }
 
         model.actionMode.closeListener.observe(viewLifecycleOwner) { event ->
