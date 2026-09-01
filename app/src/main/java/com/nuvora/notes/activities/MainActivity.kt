@@ -65,14 +65,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        try {
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
 
-        setSupportActionBar(binding.Toolbar)
-        setupFAB()
-        setupActionMode()
-        setupNavigation()
-        setupSearch()
+            setSupportActionBar(binding.Toolbar)
+            setupFAB()
+            setupActionMode()
+            setupNavigation()
+            setupSearch()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.room
+package com.nuvora.notes.room
 
 import android.app.Application
 import androidx.room.Database
@@ -39,6 +39,7 @@ abstract class NotallyDatabase : RoomDatabase() {
             return instance ?: synchronized(this) {
                 val instance = Room.databaseBuilder(app, NotallyDatabase::class.java, DatabaseName)
                     .addMigrations(Migration2, Migration3, Migration4, Migration5)
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build()
                 this.instance = instance

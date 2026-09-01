@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.preferences
+package com.nuvora.notes.preferences
 
 import android.app.Application
 import android.preference.PreferenceManager
@@ -27,11 +27,11 @@ class Preferences private constructor(app: Application) {
 
     val autoBackup = BetterLiveData(getTextPref(AutoBackup))
 
-    private fun getListPref(info: ListInfo) = requireNotNull(preferences.getString(info.key, info.defaultValue))
+    private fun getListPref(info: ListInfo) = preferences.getString(info.key, info.defaultValue) ?: info.defaultValue
 
-    private fun getTextPref(info: TextInfo) = requireNotNull(preferences.getString(info.key, info.defaultValue))
+    private fun getTextPref(info: TextInfo) = preferences.getString(info.key, info.defaultValue) ?: info.defaultValue
 
-    private fun getSeekbarPref(info: SeekbarInfo) = requireNotNull(preferences.getInt(info.key, info.defaultValue))
+    private fun getSeekbarPref(info: SeekbarInfo) = preferences.getInt(info.key, info.defaultValue)
 
 
     fun getWidgetData(id: Int) = preferences.getLong("widget:$id", 0)
