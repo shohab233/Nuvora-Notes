@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.room.livedata
+package com.nuvora.notes.room.livedata
 
 import androidx.lifecycle.LiveData
 import com.nuvora.notes.room.BaseNote
@@ -25,6 +25,12 @@ import com.nuvora.notes.room.Item
 class Content(liveData: LiveData<List<BaseNote>>, transform: (List<BaseNote>) -> List<Item>) : LiveData<List<Item>>() {
 
     init {
-        liveData.observeForever { list -> value = transform(list) }
+        liveData.observeForever { list ->
+            if (list != null) {
+                value = transform(list)
+            } else {
+                value = emptyList()
+            }
+        }
     }
 }

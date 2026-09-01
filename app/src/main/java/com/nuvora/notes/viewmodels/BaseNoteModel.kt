@@ -122,7 +122,9 @@ class BaseNoteModel(private val app: Application) : AndroidViewModel(app) {
             }
         }
         allNotes.observeForever { list ->
-            Cache.list = list
+            if (list != null) {
+                Cache.list = list
+            }
         }
     }
 

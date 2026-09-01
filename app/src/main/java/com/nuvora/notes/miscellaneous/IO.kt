@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.miscellaneous
+package com.nuvora.notes.miscellaneous
 
 import android.app.Application
 import android.content.Context
@@ -24,15 +24,10 @@ object IO {
         var file: File? = null
 
         try {
-            val mediaDir = app.externalMediaDirs.firstOrNull()
-            if (mediaDir != null) {
-                file = File(mediaDir, name)
-                if (file.exists()) {
-                    if (!file.isDirectory) {
-                        file.delete()
-                        createDirectory(file)
-                    }
-                } else createDirectory(file)
+            val baseDir = app.getExternalFilesDir(null) ?: app.filesDir
+            file = File(baseDir, name)
+            if (!file.exists()) {
+                file.mkdirs()
             }
         } catch (exception: Exception) {
             exception.printStackTrace()

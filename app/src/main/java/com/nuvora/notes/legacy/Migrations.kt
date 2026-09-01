@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.legacy
+package com.nuvora.notes.legacy
 
 import android.app.Application
 import android.content.Context
@@ -24,7 +24,7 @@ object Migrations {
 
     fun getPreviousLabels(app: Application): List<Label> {
         val preferences = getLabelsPreferences(app)
-        val labels = requireNotNull(preferences.getStringSet("labelItems", emptySet()))
+        val labels = preferences.getStringSet("labelItems", emptySet()) ?: emptySet()
         return labels.map { value -> Label(value) }
     }
 
