@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.activities
+package com.nuvora.notes.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -403,7 +403,9 @@ class MainActivity : AppCompatActivity() {
                 popExit = androidx.navigation.ui.R.anim.nav_default_pop_exit_anim
                 popEnter = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim
             }
-            popUpTo(navController.graph.startDestination) { inclusive = false }
+            popUpTo(navController.graph.startDestinationId) {
+                inclusive = false
+            }
         }
         navController.navigate(id, null, options)
     }

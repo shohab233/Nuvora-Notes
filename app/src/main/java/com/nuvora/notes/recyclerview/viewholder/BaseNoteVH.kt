@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.recyclerview.viewholder
+package com.nuvora.notes.recyclerview.viewholder
 
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
@@ -180,7 +180,7 @@ class BaseNoteVH(
                     override fun onLoadFailed(
                         e: GlideException?,
                         model: Any?,
-                        target: Target<Drawable>?,
+                        target: Target<Drawable>,
                         isFirstResource: Boolean
                     ): Boolean {
                         binding.Message.visibility = View.VISIBLE
@@ -188,10 +188,10 @@ class BaseNoteVH(
                     }
 
                     override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
+                        resource: Drawable,
+                        model: Any,
                         target: Target<Drawable>?,
-                        dataSource: DataSource?,
+                        dataSource: DataSource,
                         isFirstResource: Boolean
                     ): Boolean {
                         return false
