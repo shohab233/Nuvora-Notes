@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Identity: Nuvora Indigo & Violet -->
+    <color name="Primary500">#4F46E5</color>
+    <color name="Primary400">#6366F1</color>
+    <color name="Primary100">#C7D2FE</color>
+    <color name="Primary50">#EEF2FF</color>
+    
+    <!-- Mappings for existing styles -->
+    <color name="Blue50">#EEF2FF</color>
+    <color name="Indigo100">#C7D2FE</color>
+    <color name="LightBlue500">#4F46E5</color>
+    <color name="LightBlue100">#A5B4FC</color>
+
+    <color name="Black">#0F172A</color>
+    <color name="Transparent">#00000000</color>
+    <color name="Grey100">#F8FAFC</color>
+
+    <!-- Modern Soft Pastel Note Hues (Light Mode) -->
+    <color name="Default">#FFFFFF</color>
+    <color name="Coral">#FFE4E6</color>
+    <color name="Orange">#FFEDD5</color>
+    <color name="Sand">#FEF9C3</color>
+    <color name="Storm">#E0F2FE</color>
+    <color name="Fog">#E0E7FF</color>
+    <color name="Sage">#CCFBF1</color>
+    <color name="Mint">#DCFCE7</color>
+    <color name="Dusk">#EDE9FE</color>
+    <color name="Flower">#FCE7F3</color>
+    <color name="Blossom">#F3E8FF</color>
+    <color name="Clay">#F1F5F9</color>
+</resources>
