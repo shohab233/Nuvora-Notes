@@ -72,6 +72,11 @@
 
         <activity android:name=".activities.ViewImage" />
 
+        <activity
+            android:name=".activities.CrashActivity"
+            android:exported="false"
+            android:process=":crash" />
+
         <activity android:name=".activities.SelectLabels" />
 
         <activity
