@@ -1,4 +1,4 @@
-﻿package com.nuvora.notes.view
+package com.nuvora.notes.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -36,9 +36,16 @@ class NavigationView(context: Context, attrs: AttributeSet) : MaterialCardView(c
     }
 
     override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
-        val systemBars = insets.getInsets(WindowInsets.Type.systemBars())
-        linearLayout.setPadding(0, systemBars.top, 0, 0)
-        return WindowInsets.CONSUMED
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            val systemBars = insets.getInsets(WindowInsets.Type.systemBars())
+            linearLayout.setPadding(0, systemBars.top, 0, 0)
+            return WindowInsets.CONSUMED
+        } else {
+            @Suppress("DEPRECATION")
+            linearLayout.setPadding(0, insets.systemWindowInsetTop, 0, 0)
+            @Suppress("DEPRECATION")
+            return insets.consumeSystemWindowInsets()
+        }
     }
 }
 
